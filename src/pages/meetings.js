@@ -1,7 +1,5 @@
-import React, { useState, useEffect } from 'react';
-import { useRouter } from 'next/router';
+import React, { useState } from 'react';
 import dynamic from 'next/dynamic';
-import { useAppSelector } from '../hooks/hooks';
 const VideoCall = dynamic(() => import('../components/VideoCall'), { ssr: false });
 
 const SSR = typeof window === 'undefined';

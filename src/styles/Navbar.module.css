@@ -1,0 +1,60 @@
+.container {
+	max-width: 1366px;
+	width: 92% !important;
+	margin: auto;
+}
+.App-header {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	padding: 30px 0 40px;
+}
+.small-devices {
+	display: none;
+}
+.small-devices .fa {
+	font-size: 30px;
+}
+.App-header .logo-part {
+	width: 20%;
+}
+.App-header .link-part {
+	width: 50%;
+	display: flex;
+	justify-content: space-between;
+}
+.App-header .link-part ul {
+	display: flex;
+	justify-content: space-between;
+	width: 100%;
+	list-style: none;
+	padding: 0;
+	margin: 0;
+}
+.App-header .link-part .nav-link {
+	font-size: 14px;
+	color: white;
+	text-decoration: none;
+	font-weight: 600;
+	letter-spacing: 0.8px;
+}
+.App-header .link-part .nav-link:hover {
+	opacity: 0.7;
+}
+.App-header .social-icon {
+	width: 30%;
+	display: flex;
+	justify-content: flex-end;
+}
+
+.fa-i {
+	padding: 6px;
+	font-size: 24px;
+	text-align: center;
+	text-decoration: none;
+	width: 2rem;
+	border-radius: 50%;
+	color: #0d2a4a;
+	margin-right: 10px;
+	background-color: #fff;
+}
