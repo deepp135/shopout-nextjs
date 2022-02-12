@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import styles from '../styles/videoPart.module.css';
 
 function Controls({ tracks, setStart, setInCall, useClient }) {
 	const client = useClient();
@@ -30,13 +31,37 @@ function Controls({ tracks, setStart, setInCall, useClient }) {
 
 	return (
 		<div className="controls">
-			<p className={trackState.audio ? 'on' : ''} onClick={() => mute('audio')}>
-				{trackState.audio ? 'MuteAudio' : 'UnmuteAudio'}
-			</p>
-			<p className={trackState.video ? 'on' : ''} onClick={() => mute('video')}>
-				{trackState.video ? 'MuteVideo' : 'UnmuteVideo'}
-			</p>
-			{<p onClick={() => leaveChannel()}>Leave</p>}
+			<div className={styles['video-control-button']}>
+				<div className={styles['button-block']}>
+					<button
+						onClick={() => mute('audio')}
+						type="button"
+						className={`${styles['btn']} ${styles['btn-primary']}`}
+					>
+						<img src={'images/microphone.svg'} alt="microphone" />
+					</button>
+					<button
+						type="button"
+						onClick={() => mute('video')}
+						className={`${styles['btn']} ${styles['btn-primary']}`}
+					>
+						<img src={'images/video-icon.svg'} alt="video" />
+					</button>
+					<button
+						type="button"
+						onClick={() => leaveChannel()}
+						className={`${styles['btn']} ${styles['btn-danger']}`}
+					>
+						<img src={'images/call.svg'} alt="call" />
+					</button>
+					{/* <button type="button" className={`${styles['btn']} ${styles['btn-primary']}`}>
+						<img src={'images/sound.svg'} alt="sound" />
+					</button> */}
+					{/* <button type="button" className={`${styles['btn']} ${styles['btn-primary']}`}>
+						<img src={'images/chat.svg'} alt="chat" />
+					</button> */}
+				</div>
+			</div>
 		</div>
 	);
 }

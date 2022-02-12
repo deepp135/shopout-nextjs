@@ -1,13 +1,12 @@
 import React, { useState, useEffect } from 'react';
-import { useAppDispatch, useAppSelector } from '../hooks/hooks';
 import { createClient, createMicrophoneAndCameraTracks } from 'agora-rtc-react';
 
 import Videos from './Video';
 import Controls from './Controls';
 
-import { removeUser, setUser } from '../redux/user/userSlice';
-
 import { AGORA_CONFIG, appId, token } from '../configs/agora.config';
+import { removeUser, setUser } from '../redux/user/userSlice';
+import { useAppDispatch, useAppSelector } from '../hooks/hooks';
 
 const useClient = createClient(AGORA_CONFIG);
 const useMicrophoneAndCameraTracks = createMicrophoneAndCameraTracks();
@@ -59,14 +58,14 @@ function VideoCall({ setInCall, channelName }) {
 		};
 
 		if (ready && tracks) {
-			console.log(channelName, 'channl');
 			init(channelName);
 		}
 	}, [channelName, client, ready, tracks, appId, dispatch, token]);
 
 	return (
-		<div>
+		<div style={{ width: '100%' }}>
 			{start && tracks && <Videos users={users} tracks={tracks} />}
+			{/* {start && tracks && <VideoPart />} */}
 			{ready && tracks && (
 				<Controls
 					useClient={useClient}
