@@ -1,14 +1,62 @@
-import Head from 'next/head';
+import React, { useState, useEffect } from 'react';
+import dynamic from 'next/dynamic';
+const VideoCall = dynamic(() => import('../components/VideoCall'), { ssr: false });
+import { useRouter } from 'next/router';
+import { toast } from 'react-toastify';
 
-import Counter from '../components/Counter';
-import styles from '../styles/Home.module.css';
+import ChatPart from '../components/chatpart';
+import Advertise from '../components/Advertise';
+import Footer from '../components/footer';
+import Navbar from '../components/Navbar';
+import { useAppDispatch } from '../hooks/hooks';
+import { verifyAppointment } from '../redux/appointments/appointmentSlice';
 
-const IndexPage = () => {
+const SSR = typeof window === 'undefined';
+
+export async function getServerSideProps(context) {
+	const channelId = context.query.appointmentId;
+	const mobileNumber = context.query.mobileNumber;
+	const inviteFrom = context.query.inviteFrom;
+
+	return { props: { channel: channelId, mobileNumber: mobileNumber, inviteFrom } };
+}
+
+function Meeting({ channel, mobileNumber, inviteFrom }) {
+	const router = useRouter();
+
+	const [inCall, setInCall] = useState(false);
+	const [loading, setLoading] = useState(true);
+
+	const dispatch = useAppDispatch();
+
+	useEffect(async () => {
+		try {
+			await dispatch(
+				verifyAppointment({ appointmentId: channel, mobileNumber, inviteFrom })
+			).unwrap();
+			setLoading(false);
+			setInCall(true);
+		} catch (error) {
+			toast.error(error.message);
+			router.push('/appointmentnotfound');
+		}
+	}, []);
+
+	if (loading) {
+		return 'Loading...';
+	}
+
 	return (
-		<div className={styles.container}>
-			<header className={styles.header}>Welcome to Shopout</header>
-		</div>
+		<>
+			<Navbar />
+			<Advertise />
+			<div className="chat-part">
+				{!SSR && inCall && <VideoCall setInCall={setInCall} channelName={channel} />}
+				<ChatPart />
+			</div>
+			<Footer />
+		</>
 	);
-};
+}
 
-export default IndexPage;
+export default Meeting;

@@ -1,3 +1,13 @@
+import {
+	ILocalVideoTrack,
+	IRemoteVideoTrack,
+	ILocalAudioTrack,
+	IRemoteAudioTrack,
+	ICameraVideoTrack,
+	UID,
+	IMicrophoneAudioTrack,
+	ILocalTrack,
+} from 'agora-rtc-sdk-ng';
 import { AgoraVideoPlayer } from 'agora-rtc-react';
 import styles from '../styles/videoPart.module.css';
 

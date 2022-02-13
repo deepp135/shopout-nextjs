@@ -906,7 +906,7 @@ agent-base@6:
   dependencies:
     agora-rtc-sdk-ng "^4.3.0"
 
-agora-rtc-sdk-ng@^4.3.0:
+agora-rtc-sdk-ng@^4.3.0, agora-rtc-sdk-ng@^4.7.1:
   version "4.8.2"
   resolved "https://registry.yarnpkg.com/agora-rtc-sdk-ng/-/agora-rtc-sdk-ng-4.8.2.tgz#49c8c21588d62708e3255051325fc5a8d74fcb49"
   integrity sha512-H5qAgTe8cn0+BN6/KOcrtGl1Lc+We7K/eD7U5DiWnBY0n/bs30isGrjIex5IXqRTJv55khSN3pqgVmEkpR3ozQ==

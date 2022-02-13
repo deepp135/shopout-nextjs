@@ -22,7 +22,8 @@
 		"@fortawesome/free-solid-svg-icons": "^5.15.4",
 		"@fortawesome/react-fontawesome": "^0.1.17",
 		"@trendyol-js/react-carousel": "^2.0.1",
-		"react-owl-carousel": "^2.3.3"
+		"react-owl-carousel": "^2.3.3",
+		"agora-rtc-sdk-ng": "^4.7.1"
 	},
 	"devDependencies": {
 		"@testing-library/jest-dom": "^5.0.0",

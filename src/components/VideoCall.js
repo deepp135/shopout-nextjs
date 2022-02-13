@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { createClient, createMicrophoneAndCameraTracks } from 'agora-rtc-react';
+import AgoraRTC from 'agora-web-sdk-ng';
 
 import Videos from './Video';
 import Controls from './Controls';
@@ -7,6 +8,7 @@ import Controls from './Controls';
 import { AGORA_CONFIG, appId, token } from '../configs/agora.config';
 import { removeUser, setUser } from '../redux/user/userSlice';
 import { useAppDispatch, useAppSelector } from '../hooks/hooks';
+import { MAX_PARTICIPANTS } from '../configs/app.config';
 
 const useClient = createClient(AGORA_CONFIG);
 const useMicrophoneAndCameraTracks = createMicrophoneAndCameraTracks();
