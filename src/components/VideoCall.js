@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import { createClient, createMicrophoneAndCameraTracks } from 'agora-rtc-react';
-import AgoraRTC from 'agora-web-sdk-ng';
 
 import Videos from './Video';
 import Controls from './Controls';
