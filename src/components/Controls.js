@@ -38,14 +38,22 @@ function Controls({ tracks, setStart, setInCall, useClient }) {
 						type="button"
 						className={`${styles['btn']} ${styles['btn-primary']}`}
 					>
-						<img src={'images/microphone.svg'} alt="microphone" />
+						{trackState.audio ? 
+							<img src={'images/microphone.svg'} alt="microphone" />
+						:
+							<img src={'images/mute.svg'} alt="mute" style={{ filter: 'invert(100%)' }} />
+						}
 					</button>
 					<button
 						type="button"
 						onClick={() => mute('video')}
 						className={`${styles['btn']} ${styles['btn-primary']}`}
 					>
-						<img src={'images/video-icon.svg'} alt="video" />
+						{trackState.video ? 
+							<img src={'images/video-icon.svg'} alt="video" />
+							:
+							<img src={'images/no-video.svg'} alt="video" style={{ filter: 'invert(100%)' }} />
+						}
 					</button>
 					<button
 						type="button"
