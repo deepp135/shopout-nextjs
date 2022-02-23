@@ -1,5 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { createClient, createMicrophoneAndCameraTracks } from 'agora-rtc-react';
+import axios from 'axios';
+import { toast } from 'react-toastify';
+import { useRouter } from 'next/router';
 
 import Videos from './Video';
 import Controls from './Controls';
@@ -12,19 +15,20 @@ import { MAX_PARTICIPANTS } from '../configs/app.config';
 const useClient = createClient(AGORA_CONFIG);
 const useMicrophoneAndCameraTracks = createMicrophoneAndCameraTracks();
 
-function VideoCall({ setInCall, channelName }) {
+function VideoCall({ setInCall, channelName, uid }) {
 	const [start, setStart] = useState(false);
+	const router = useRouter();
 
 	const dispatch = useAppDispatch();
 
 	const client = useClient();
 	const { ready, tracks } = useMicrophoneAndCameraTracks();
-
-	const users = useAppSelector((state) => state.user.user);
+	const [ loading, setLoading ] = useState(false);
+ 	const users = useAppSelector((state) => state.user.user);
 
 	useEffect(() => {
 		// function to initialise the SDK
-		let init = async (name) => {
+		let init = async (name, uid) => {
 			client.on('user-published', async (user, mediaType) => {
 				await client.subscribe(user, mediaType);
 				console.log('subscribe success');
@@ -51,7 +55,7 @@ function VideoCall({ setInCall, channelName }) {
 				dispatch(removeUser(user.uid));
 			});
 
-			await client.join(appId, name, token, null);
+			await client.join(appId, name, token, uid);
 
 			if (tracks) await client.publish([tracks[0], tracks[1]]);
 
@@ -59,7 +63,7 @@ function VideoCall({ setInCall, channelName }) {
 		};
 
 		if (ready && tracks) {
-			init(channelName);
+			init(channelName, uid);
 		}
 	}, [channelName, client, ready, tracks, appId, dispatch, token]);
 

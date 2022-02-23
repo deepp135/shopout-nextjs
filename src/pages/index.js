@@ -51,7 +51,7 @@ function Meeting({ channel, mobileNumber, inviteFrom }) {
 			<Navbar />
 			<Advertise />
 			<div className="chat-part">
-				{!SSR && inCall && <VideoCall setInCall={setInCall} channelName={channel} />}
+				{!SSR && inCall && <VideoCall setInCall={setInCall} channelName={channel} uid={inviteFrom === 'user' ? 4 : 2} />}
 				<ChatPart />
 			</div>
 			<Footer />
