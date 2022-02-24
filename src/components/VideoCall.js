@@ -68,19 +68,19 @@ function VideoCall({ setInCall, channelName, uid }) {
 	}, [channelName, client, ready, tracks, appId, dispatch, token]);
 
 	return (
-		<div style={{ width: '100%' }}>
-			{start && tracks && <Videos users={users} tracks={tracks} />}
-			{/* {start && tracks && <VideoPart />} */}
-			{ready && tracks && (
+		<>
+			{start && tracks && <Videos users={users} tracks={tracks} >
 				<Controls
 					useClient={useClient}
 					tracks={tracks}
 					setStart={setStart}
 					setInCall={setInCall}
 				/>
-			)}
-		</div>
+			</Videos>}
+			{/* {start && tracks && <VideoPart />} */}
+		</>
 	);
 }
 
 export default VideoCall;
+

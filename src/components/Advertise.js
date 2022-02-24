@@ -3,7 +3,8 @@ import styles from '../styles/advertise.module.css';
 
 function Advertise() {
 	return (
-		<div className={styles['banner-part']}>
+		
+			<div className={styles['banner-part']}>
 			<div className={styles['banner-content']}>
 				<h2>DEALS OF THE DAY</h2>
 			</div>
@@ -14,6 +15,7 @@ function Advertise() {
 				<img src={'/images/banner-background.svg'} alt="banner-image" />
 			</div>
 		</div>
+		
 	);
 }
 

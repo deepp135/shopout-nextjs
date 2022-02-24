@@ -49,11 +49,14 @@ function Meeting({ channel, mobileNumber, inviteFrom }) {
 	return (
 		<>
 			<Navbar />
+			<div className='content-part'>
 			<Advertise />
-			<div className="chat-part">
-				{!SSR && inCall && <VideoCall setInCall={setInCall} channelName={channel} uid={inviteFrom === 'user' ? 4 : 2} />}
-				<ChatPart />
+				<div className="chat-part">
+					{!SSR && inCall && <VideoCall setInCall={setInCall} channelName={channel} uid={inviteFrom === 'user' ? 4 : 2} />}
+					<ChatPart />
+				</div>
 			</div>
+		
 			<Footer />
 		</>
 	);

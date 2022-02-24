@@ -30,7 +30,7 @@ function Controls({ tracks, setStart, setInCall, useClient }) {
 	};
 
 	return (
-		<div className="controls">
+		<>
 			<div className={styles['video-control-button']}>
 				<div className={styles['button-block']}>
 					<button
@@ -41,7 +41,9 @@ function Controls({ tracks, setStart, setInCall, useClient }) {
 						{trackState.audio ? 
 							<img src={'images/microphone.svg'} alt="microphone" />
 						:
-							<img src={'images/mute.svg'} alt="mute" style={{ filter: 'invert(100%)' }} />
+							<img src={'images/mute.svg'} alt="mute" 
+							// style={{ filter: 'invert(100%)' }} 
+							/>
 						}
 					</button>
 					<button
@@ -70,7 +72,7 @@ function Controls({ tracks, setStart, setInCall, useClient }) {
 					</button> */}
 				</div>
 			</div>
-		</div>
+		</>
 	);
 }
 

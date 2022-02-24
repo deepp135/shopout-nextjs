@@ -1,10 +1,9 @@
 import { AgoraVideoPlayer } from 'agora-rtc-react';
 import styles from '../styles/videoPart.module.css';
 
-const Videos = ({ users, tracks }) => {
+const Videos = ({ users, tracks, children }) => {
 	let mainUser = users.find(user => user.uid === 1)
 	return (
-		<div className={styles['chat-part']}>
 			<div className={styles['video-chat']}>
 				{/* video-box */}
 				<div className={styles['video-box']}>
@@ -48,8 +47,8 @@ const Videos = ({ users, tracks }) => {
 						</div>
 					</div>
 				</div>
+				{children}
 			</div>
-		</div>
 	);
 };
 

@@ -3,7 +3,7 @@ import styles from '../styles/chatpart.module.css';
 
 function ChatPart() {
 	return (
-		<div className={styles['chat-part']}>
+		<>
 			{/* chat-box */}
 			<div className={styles['chat-boat-part']}>
 				<div className={styles['chat-header']}>
@@ -80,7 +80,7 @@ function ChatPart() {
 					</div>
 				</div>
 			</div>
-		</div>
+		</>
 	);
 }
 
