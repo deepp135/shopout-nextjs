@@ -10,6 +10,10 @@ import Footer from '../components/footer';
 import Navbar from '../components/Navbar';
 import { useAppDispatch } from '../hooks/hooks';
 import { verifyAppointment } from '../redux/appointments/appointmentSlice';
+import AddUser from '../components/AddUser';
+import { setCurrentUser } from '../redux/user/userSlice';
+import { useAppSelector } from '../hooks/hooks';
+
 
 const SSR = typeof window === 'undefined';
 
@@ -26,21 +30,30 @@ function Meeting({ channel, mobileNumber, inviteFrom }) {
 
 	const [inCall, setInCall] = useState(false);
 	const [loading, setLoading] = useState(true);
+	const [userDetails, setUserDetails] = useState({ name: '', phone: '' });
 
 	const dispatch = useAppDispatch();
+    const currentUserName = useAppSelector((state) => state.user.currentUserName);
 
-	useEffect(async () => {
+    useEffect(async () => {
 		try {
 			await dispatch(
 				verifyAppointment({ appointmentId: channel, mobileNumber, inviteFrom })
-			).unwrap();
+			).unwrap();			
 			setLoading(false);
-			setInCall(true);
+
 		} catch (error) {
 			toast.error(error.message);
 			router.push('/appointmentnotfound');
 		}
 	}, []);
+
+	const handleOnSubmit = (e) => {
+		e.preventDefault();
+		//make the user api call here
+		dispatch(setCurrentUser(userDetails.name));
+		setInCall(true);
+	};
 
 	if (loading) {
 		return 'Loading...';
@@ -50,10 +63,22 @@ function Meeting({ channel, mobileNumber, inviteFrom }) {
 		<>
 			<Navbar />
 			<Advertise />
-			<div className="chat-part">
-				{!SSR && inCall && <VideoCall setInCall={setInCall} channelName={channel} uid={inviteFrom === 'user' ? 4 : 2} />}
-				<ChatPart />
-			</div>
+			{!SSR && inCall && currentUserName? (
+				<div className="chat-part">
+					<VideoCall
+						setInCall={setInCall}
+						channelName={channel}
+						uid={inviteFrom === 'user' ? 4 : 2}
+					/>
+					<ChatPart channel={channel} uid={inviteFrom === 'user' ? 4 : 2} />
+				</div>
+			) : (
+				<AddUser
+					setUserDetails={setUserDetails}
+					userDetails={userDetails}
+					handleOnSubmit={handleOnSubmit}
+				/>
+			)}
 			<Footer />
 		</>
 	);
