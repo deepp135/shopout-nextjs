@@ -147,12 +147,11 @@
 	 .chat-boat-part {
 		width: 100%;
 		margin-top: 1rem;
-	}
-	 .chat-boat-part {
-		width: 100%;
-		margin-top: 1rem;
+		height: 600px;
 	}
 }
 @media screen and (max-width: 480px){
-
+	.chat-boat-part {
+		height: 500px;
+	}
 }
