@@ -64,12 +64,12 @@ function Controls({ tracks, setStart, setInCall, useClient }) {
 					>
 						<img src={'images/call.svg'} alt="call" />
 					</button>
-					{/* <button type="button" className={`${styles['btn']} ${styles['btn-primary']}`}>
+					<button type="button" className={`${styles['btn']} ${styles['btn-primary']}`}>
 						<img src={'images/sound.svg'} alt="sound" />
-					</button> */}
-					{/* <button type="button" className={`${styles['btn']} ${styles['btn-primary']}`}>
+					</button>
+					<button type="button" className={`${styles['btn']} ${styles['btn-primary']}`}>
 						<img src={'images/chat.svg'} alt="chat" />
-					</button> */}
+					</button>
 				</div>
 			</div>
 		</>
