@@ -1,0 +1,4 @@
+{ "apps": [ { "name": "shopout - frontend", "script": "npm", "args" : "start"
+        }
+    ]
+}
