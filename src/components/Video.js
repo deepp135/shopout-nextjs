@@ -46,6 +46,9 @@ const Videos = ({ users, tracks, children }) => {
 								})}
 						</div>
 					</div>
+					<div className={styles['user-name']}>
+               			 <p className={styles['name-plate']}>Rihana</p>
+              		</div>
 				</div>
 				{children}
 			</div>

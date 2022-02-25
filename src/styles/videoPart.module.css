@@ -31,9 +31,10 @@
 	object-position: center;
   }
   .video-chat .main-image{
-	border: 1px solid #2d3d4f;
-	border-radius: 16px;
-	background-color: #13233a;
+	border: 2px solid #2d3d4f;
+	/* border: 2px solid #fff; */
+	border-radius: 28px;
+	background-color: #00000099;
 	overflow: hidden;
 	display: flex;
 	justify-content: center;
@@ -79,7 +80,57 @@
   .video-control-button .button-block .btn.btn-danger{
 	background-color: #80131f;
   }
-
+  .video-chat .video-box .user-name{
+	position: absolute;
+    bottom: 2px;
+    background-color: #000000b3;
+    width: 99.48%;
+    border-bottom-left-radius: 26px;
+    border-bottom-right-radius: 26px;
+    margin: 0 0px;
+    height: 58px;
+    display: flex;
+    align-items: center;
+    left: 1px;
+    margin: 0 1px;
+}
+.video-chat .video-box .user-name .name-plate{
+  padding: 0 32px;
+  font-size: 25px;
+  line-height: 30px;
+  color: #ffffff;
+  font-weight: 700;
+  font-family: "Roboto";
+  margin: 0;
+}
+.cross-line,.cross-line-video{
+	position: relative;
+	
+}
+.cross-line::after{
+	position: absolute;
+    content: "";
+    height: 5px;
+    width: 54px;
+    left: -17px;
+    background-color: white;
+    transform: rotate(-45deg);
+    top: 16px;
+    border-radius: 6px;
+    border: 3px solid #134594;
+}
+.cross-line-video::after{
+	position: absolute;
+    content: "";
+    height: 5px;
+    width: 58px;
+    left: -10px;
+    background-color: white;
+    transform: rotate(-45deg);
+    top: 10px;
+    border-radius: 6px;
+    border: 3px solid #134594;
+}
   @media screen and (max-width: 1440px) {
 	.video-chat .main-image {
 		min-height: 568px;
@@ -96,6 +147,12 @@
 	}
 	.video-control-button {
 		margin-top: 2%;
+	}
+	.video-chat .video-box .user-name{
+		height: 50px;
+	}
+	.video-chat .video-box .user-name .name-plate{
+	  font-size: 18px;
 	}
 }
 @media screen and (max-width: 480px) {

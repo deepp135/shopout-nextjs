@@ -39,11 +39,17 @@ function Controls({ tracks, setStart, setInCall, useClient }) {
 						className={`${styles['btn']} ${styles['btn-primary']}`}
 					>
 						{trackState.audio ? 
+						<div>
 							<img src={'images/microphone.svg'} alt="microphone" />
-						:
-							<img src={'images/mute.svg'} alt="mute" 
+						</div>
+							
+						:	
+						<div className={styles['cross-line']}>
+							<img src={'images/microphone.svg'} alt="mute"  
 							// style={{ filter: 'invert(100%)' }} 
 							/>
+						</div>
+							
 						}
 					</button>
 					<button
@@ -52,9 +58,15 @@ function Controls({ tracks, setStart, setInCall, useClient }) {
 						className={`${styles['btn']} ${styles['btn-primary']}`}
 					>
 						{trackState.video ? 
+						<div>
 							<img src={'images/video-icon.svg'} alt="video" />
+						</div>
+							
 							:
-							<img src={'images/no-video.svg'} alt="video" style={{ filter: 'invert(100%)' }} />
+							<div className={styles['cross-line-video']}>
+								<img src={'images/video-icon.svg'} alt="no-video"  />
+							</div>
+							
 						}
 					</button>
 					<button

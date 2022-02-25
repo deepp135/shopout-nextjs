@@ -5,24 +5,24 @@
 }
 
 /* social icon */
-.social-icon .fa-i:hover {
+.social-icon .fa-i-footer:hover {
 	opacity: 0.7;
 }
-.social-icon .fa-i {
+.social-icon .fa-i-footer {
 	margin-right: 20px;
 }
-.social-icon .fa-i:last-child {
+.social-icon .fa-i-footer:last-child {
 	margin-right: 0;
 }
 
-.fa-i {
+.fa-i-footer {
 	padding: 6px;
     font-size: 24px;
     width: 36px;
     height: 36px;
     text-align: center;
     text-decoration: none;
-    border-radius: 50%;
+    border-radius: 28%;
     color: #0d2a4a;
     background-color: #fff;
     display: flex;
