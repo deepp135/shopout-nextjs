@@ -16,10 +16,10 @@ function ChatPart({ channel, uid }) {
 	const handleSendMessage = async () => {
 		await setDoc(doc(collection(db, 'THREADS', channel, 'MESSAGES')), {
 			text: input,
-			createdAt: moment().format('hh:mm a'),
+			createdAt: moment().toString(),
 			user: { uid, name: currentUserName },
 		});
-        setInput('')
+		setInput('');
 	};
 
 	const loadChat = () => {
@@ -63,7 +63,9 @@ function ChatPart({ channel, uid }) {
 										<b>{message.user.name}</b>
 										<div className={styles['msg-content']}>{message.text}</div>
 									</div>
-									<small className={styles['time']}>{message.createdAt}</small>
+									<small className={styles['time']}>
+										{moment(message.createdAt).startOf('minutes').fromNow()}
+									</small>
 								</div>
 							);
 						}
@@ -74,7 +76,9 @@ function ChatPart({ channel, uid }) {
 									<b>{message.user.name}</b>
 									<div className={styles['msg-content']}>{message.text}</div>
 								</div>
-								<small className={styles['time']}>{message.createdAt}</small>
+								<small className={styles['time']}>
+									{moment(message.createdAt).startOf('minutes').fromNow()}
+								</small>
 							</div>
 						);
 					})}
