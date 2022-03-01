@@ -14,12 +14,14 @@ function ChatPart({ channel, uid }) {
 	/* <div className={`${styles['msg']} ${styles['sender']}`}></div> */
 
 	const handleSendMessage = async () => {
-		await setDoc(doc(collection(db, 'THREADS', channel, 'MESSAGES')), {
-			text: input,
-			createdAt: moment().toString(),
-			user: { uid, name: currentUserName },
-		});
-		setInput('');
+		if(input) {
+			await setDoc(doc(collection(db, 'THREADS', channel, 'MESSAGES')), {
+				text: input,
+				createdAt: moment().toString(),
+				user: { uid, name: currentUserName },
+			});
+			setInput('');
+		}
 	};
 
 	const loadChat = () => {
